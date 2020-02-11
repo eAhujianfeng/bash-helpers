@@ -1,0 +1,42 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: "rbenv"
+      git:
+        repo: "https://github.com/rbenv/rbenv.git"
+        depth: 1
+        dest: "~/.rbenv"
+    - name: "ruby-build"
+      git:
+        repo: "https://github.com/rbenv/ruby-build.git"
+        depth: 1
+        dest: "~/.rbenv/plugins/ruby-build"
+    - name: "nodeenv"
+      git:
+        repo: "https://github.com/nodenv/nodenv.git"
+        depth: 1
+        dest: "~/.nodenv"
+    - name: "node-build"
+      git:
+        repo: "https://github.com/nodenv/node-build.git"
+        depth: 1
+        dest: "~/.nodenv/plugins/node-build"
+    - name: "phpenv"
+      git:
+        repo: "git://github.com/phpenv/phpenv.git"
+        depth: 1
+        dest: "~/.phpenv"
+    - name: "php-build"
+      git:
+        repo: "https://github.com/php-build/php-build"
+        depth: 1
+        dest: "~/.phpenv/plugins/php-build"
+    - name: Insert/Update rbenv path
+      blockinfile:
+        path: "~/.bash_profile"
+        block: |
+          export PATH="$HOME/.rbenv/bin:$HOME/.nodenv/bin:$HOME/.phpenv/bin:$PATH"
+          eval "$(rbenv init -)"
+          eval "$(nodenv init -)"
+          eval "$(phpenv init -)"

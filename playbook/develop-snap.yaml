@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: code
+      become: yes
+      snap:
+        name:
+          - code
+        classic: yes
+    - name: chromium
+      become: yes
+      snap:
+        name:
+          - chromium

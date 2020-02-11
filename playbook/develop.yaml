@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: gcc make perl git mysql-server
+      become: yes
+      apt:
+        pkg:
+          - gcc
+          - make
+          - perl
+          - libtool
+          - autoconf
+          - nasm
+          - git
+          - mysql-server
+          - nginx
+
+
+
+

@@ -1,0 +1,20 @@
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: "ruby requiements"
+      become: yes
+      apt:
+        pkg:
+          - autoconf
+          - bison
+          - build-essential
+          - libssl1.0-dev
+          - libyaml-dev
+          - libreadline6-dev
+          - zlib1g-dev
+          - libncurses5-dev
+          - libffi-dev
+          - libgdbm5
+          - libgdbm-dev

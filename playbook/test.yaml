@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - service:
+        name: nginx
+        state: started
+      become: yes
+      become_method: sudo
